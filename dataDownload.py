@@ -11,6 +11,7 @@ import requests
 import time
 from bs4 import BeautifulSoup
 from tqdm import tqdm
+import os
 
 
 # 下載黨產會官網公告資訊/新聞/史料故事
@@ -90,6 +91,9 @@ def DownloadCipasPad(response):
 
     return contentData, attachData
 
+
+# 建立儲存資料夾
+if 'data' not in os.listdir(): os.mkdir('./data')
 
 # 下載黨產會官網公告資訊/新聞/史料故事
 cipasWebContentData = pd.DataFrame()
