@@ -2,8 +2,6 @@
 # 2022/01/23 蘇彥庭
 import pandas as pd
 import requests
-import re
-from bs4 import BeautifulSoup
 from tqdm import tqdm
 import os
 
@@ -44,7 +42,7 @@ padAttachData = padAttachData[padAttachData['fileType'] == 'pdf']
 pdfData = pd.concat([webAttachData, padAttachData])
 pdfData = pdfData.drop(columns=['fileType'])
 # 標記黨產會提供的pdf檔案連結
-pdfData['mark'] = ['Y' if elem in rawDataUrls else 'N'for elem in pdfData['attachFileLinks']]
+pdfData['mark'] = ['Y' if elem in rawDataUrls else 'N' for elem in pdfData['attachFileLinks']]
 
 # 下載PDF資料
 # 共有兩個雲端空間資料來源:
