@@ -62,9 +62,8 @@ for url in tqdm(pdfData['attachFileLinks']):
 pdfData['pdfFileNames'] = pdfFileNameList
 
 # 迴圈讀取PDF檔案並擷取出文字
-pdfFiles = os.listdir('./data/pdf/')
 pdfContents = []
-for pdfFile in tqdm(pdfFiles):
+for pdfFile in tqdm(pdfData['pdfFileNames']):
     pdf = pdfplumber.open(f'./data/pdf/{pdfFile}')
     pdfContent = '\n'.join([elem.extract_text() for elem in pdf.pages])
     pdfContents.append(pdfContent)
