@@ -1,11 +1,10 @@
 # 不當黨產委員會文本資料下載
 # 2022/01/22 蘇彥庭
 # 文本來源類型
-# 1. 首頁->公告資訊: https://www.cipas.gov.tw/gazettes/
-# 2. 首頁->新聞: https://www.cipas.gov.tw/news/
-# 3. 首頁->史料故事: https://www.cipas.gov.tw/stories/
-# 4. 政黨不動產查詢系統: https://cipas-pad.nat.gov.tw/picks/
-# 其中公告資訊, 新聞, 史料故事網站採用同一框架 可採用相同爬蟲程式碼
+# 1. 黨產會官網首頁->新聞稿: https://www.cipas.gov.tw/news/
+# 2. 黨產會官網首頁->史料故事: https://www.cipas.gov.tw/stories/
+# 3. 政黨不動產查詢系統: https://cipas-pad.nat.gov.tw/picks/
+# 其中新聞稿, 史料故事網站採用同一框架 可採用相同爬蟲程式碼
 import pandas as pd
 import requests
 import time
@@ -13,7 +12,7 @@ from bs4 import BeautifulSoup
 import os
 
 
-# 下載黨產會官網公告資訊/新聞/史料故事
+# 下載黨產會官網新聞稿/史料故事
 def DownloadCipasWeb(response):
 
     # 取得網頁內容
@@ -94,10 +93,10 @@ def DownloadCipasPad(response):
 # 建立儲存資料夾
 if 'data' not in os.listdir(): os.mkdir('./data')
 
-# 下載黨產會官網公告資訊/新聞/史料故事
+# 下載黨產會官網新聞稿/史料故事
 cipasWebContentData = pd.DataFrame()
 cipasWebAttachData = pd.DataFrame()
-for source in ['gazettes', 'news', 'stories']:
+for source in ['news', 'stories']:
 
     # 查詢失敗次數初始值: 若失敗次數超過上限則認為該資料來源已無資料可下載
     noPageNums = 0
