@@ -122,8 +122,8 @@ for source in ['gazettes', 'news', 'stories']:
     print(f'{source} 已無新資料頁面 資料下載結束')
 
 # 輸出結果
-cipasWebContentData.to_csv('cipasWebContentData.csv', encoding='utf-8-sig', index=False)
-cipasWebAttachData.to_csv('cipasWebAttachData.csv', encoding='utf-8-sig', index=False)
+cipasWebContentData.to_csv('./data/cipasWebContentData.csv', encoding='utf-8-sig', index=False)
+cipasWebAttachData.to_csv('./data/cipasWebAttachData.csv', encoding='utf-8-sig', index=False)
 
 
 # 下載政黨不動產查詢系統文章
@@ -156,5 +156,5 @@ while noPageNums <= 10:
 print('picks 已無新資料頁面 資料下載結束')
 
 # 輸出結果
-cipasPadContentData.to_csv('cipasPadContentData.csv', encoding='utf-8-sig', index=False)
-cipasPadAttachData.to_csv('cipasPadAttachData.csv', encoding='utf-8-sig', index=False)
+cipasPadContentData.to_csv('./data/cipasPadContentData.csv', encoding='utf-8-sig', index=False)
+cipasPadAttachData.to_csv('./data/cipasPadAttachData.csv', encoding='utf-8-sig', index=False)
