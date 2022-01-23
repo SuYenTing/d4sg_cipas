@@ -85,7 +85,7 @@ def DownloadCipasPad(response):
         'id': url.split('/')[-1],
         'attachFileTypes': attachFileTypes,
         'attachFileNames': attachFileNames,
-        'attachLinks': attachFileLinks,
+        'attachFileLinks': attachFileLinks,
         })
 
     return contentData, attachData
