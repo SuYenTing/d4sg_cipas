@@ -1,10 +1,10 @@
-# 不當黨產委員會PDF檔案下載
+# 不當黨產委員會PDF檔案下載與文字擷取
 # 2022/01/23 蘇彥庭
 import pandas as pd
 import requests
-from tqdm import tqdm
+import pdfplumber
 import os
-
+from tqdm import tqdm
 
 # PDF檔案下載函數
 def DownloadPdfFile(url, saveFileName):
@@ -60,6 +60,17 @@ for url in tqdm(pdfData['attachFileLinks']):
 
 # 將PDF檔案名稱新增進PDF檔案資料
 pdfData['pdfFileNames'] = pdfFileNameList
+
+# 迴圈讀取PDF檔案並擷取出文字
+pdfFiles = os.listdir('./data/pdf/')
+pdfContents = []
+for pdfFile in tqdm(pdfFiles):
+    pdf = pdfplumber.open(f'./data/pdf/{pdfFile}')
+    pdfContent = '\n'.join([elem.extract_text() for elem in pdf.pages])
+    pdfContents.append(pdfContent)
+
+# 將將PDF檔案擷取文字新增進PDF檔案資料
+pdfData['content'] = pdfContents
 
 # 輸出PDF檔案資料
 pdfData.to_csv('./data/pdfData.csv', encoding='utf-8-sig', index=False)
