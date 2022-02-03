@@ -1,8 +1,8 @@
 # 使用CKIP套件對黨產會文本進行斷詞
 # 建議在gpu環境下運作
 # 2022/02/02 蘇彥庭
-# https://github.com/ckiplab/ckip-transformers
-# pip install -U ckip-transformers
+# CKIP套件程式碼範例: https://github.com/ckiplab/ckip-transformers
+# CKIP套件安裝: pip install -U ckip-transformers
 import pandas as pd
 from ckip_transformers.nlp import CkipWordSegmenter, CkipPosTagger, CkipNerChunker
 
@@ -27,4 +27,6 @@ for word_ws in ws:
 
 # 儲存斷詞後文章結果
 data['tokenize'] = output
-data.to_csv('webTokenizeData.csv', index=False, encoding='utf-8-sig')
+
+# 輸出檔案
+data.to_csv('./data/webTokenizeData.csv', index=False, encoding='utf-8-sig')
